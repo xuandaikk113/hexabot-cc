@@ -9,6 +9,7 @@
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Transform } from 'class-transformer';
 import { IsArray, IsIn } from 'class-validator';
+import { Schema as MongooseSchema } from 'mongoose';
 
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
@@ -64,6 +65,14 @@ export class Setting extends BaseSchema {
     default: false,
   })
   translatable?: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
 }
 
 export const SettingModel: ModelDefinition = LifecycleHookManager.attach({

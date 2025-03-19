@@ -10,6 +10,7 @@ import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Transform, Type } from 'class-transformer';
 import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import {
@@ -54,16 +55,29 @@ export class MenuStub extends BaseSchema {
    */
   @Prop({ type: String, validate: (url: string | URL) => !!new URL(url) })
   url?: string;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
 }
 
 @Schema({ timestamps: true })
 export class Menu extends MenuStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Transform(({ obj }) => obj.parent?.toString())
   parent?: string;
 }
 
 @Schema({ timestamps: true })
 export class MenuFull extends MenuStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => Menu)
   parent: Menu;
 }
@@ -84,4 +98,4 @@ export default MenuModel.schema;
 
 export type MenuPopulate = keyof TFilterPopulateFields<Menu, MenuStub>;
 
-export const MENU_POPULATE: MenuPopulate[] = ['parent'];
+export const MENU_POPULATE: MenuPopulate[] = ['parent', 'createdBy'];

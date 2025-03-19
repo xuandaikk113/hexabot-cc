@@ -12,6 +12,7 @@ import mongoose, { Document } from 'mongoose';
 
 import { ContentElement } from '@/chat/schemas/types/message';
 import { config } from '@/config';
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import { TFilterPopulateFields } from '@/utils/types/filter.types';
@@ -49,6 +50,13 @@ export class ContentStub extends BaseSchema {
   @Prop({ type: String })
   rag?: string;
 
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
+
   /**
    * Helper to return the internal url of this content.
    */
@@ -66,6 +74,9 @@ export class ContentStub extends BaseSchema {
 
 @Schema({ timestamps: true })
 export class Content extends ContentStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Transform(({ obj }) => obj.entity.toString())
   entity: string;
 
@@ -86,6 +97,9 @@ export class Content extends ContentStub {
 
 @Schema({ timestamps: true })
 export class ContentFull extends ContentStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => ContentType)
   entity: ContentType;
 }
@@ -114,4 +128,4 @@ export default ContentModel.schema;
 
 export type ContentPopulate = keyof TFilterPopulateFields<Content, ContentStub>;
 
-export const CONTENT_POPULATE: ContentPopulate[] = ['entity'];
+export const CONTENT_POPULATE: ContentPopulate[] = ['entity', 'createdBy'];

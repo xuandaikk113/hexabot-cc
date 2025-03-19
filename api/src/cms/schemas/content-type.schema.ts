@@ -7,13 +7,15 @@
  */
 
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Transform, Type } from 'class-transformer';
 import mongoose from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 
 @Schema({ timestamps: true })
-export class ContentType extends BaseSchema {
+export class ContentTypeStub extends BaseSchema {
   /**
    * The name the content type.
    */
@@ -44,11 +46,30 @@ export class ContentType extends BaseSchema {
     label: string;
     type: string;
   }[];
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
+}
+
+@Schema({ timestamps: true })
+export class ContentType extends ContentTypeStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+}
+
+@Schema({ timestamps: true })
+export class ContentTypeFull extends ContentTypeStub {
+  @Type(() => User)
+  createdBy: User;
 }
 
 export const ContentTypeModel: ModelDefinition = LifecycleHookManager.attach({
   name: ContentType.name,
-  schema: SchemaFactory.createForClass(ContentType),
+  schema: SchemaFactory.createForClass(ContentTypeStub),
 });
 
 export default ContentTypeModel.schema;

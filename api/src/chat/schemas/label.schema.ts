@@ -7,8 +7,10 @@
  */
 
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Exclude, Type } from 'class-transformer';
+import { Exclude, Transform, Type } from 'class-transformer';
+import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import {
@@ -50,16 +52,29 @@ export class LabelStub extends BaseSchema {
     default: false,
   })
   builtin: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
 }
 
 @Schema({ timestamps: true })
 export class Label extends LabelStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Exclude()
   users?: never;
 }
 
 @Schema({ timestamps: true })
 export class LabelFull extends LabelStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => Subscriber)
   users?: Subscriber[];
 }

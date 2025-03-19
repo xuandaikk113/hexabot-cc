@@ -11,6 +11,7 @@ import { Exclude, Transform, Type } from 'class-transformer';
 import { Schema as MongooseSchema } from 'mongoose';
 import { z } from 'zod';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import { buildZodSchemaValidator } from '@/utils/helpers/zod-validation';
@@ -129,10 +130,20 @@ export class BlockStub extends BaseSchema {
     default: false,
   })
   builtin: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
 }
 
 @Schema({ timestamps: true })
 export class Block extends BlockStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Transform(({ obj }) => obj.trigger_labels.map((elem) => elem.toString()))
   trigger_labels: string[];
 
@@ -159,6 +170,9 @@ export class Block extends BlockStub {
 
 @Schema({ timestamps: true })
 export class BlockFull extends BlockStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => Label)
   trigger_labels: Label[];
 

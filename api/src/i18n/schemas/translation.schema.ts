@@ -7,13 +7,16 @@
  */
 
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Transform, Type } from 'class-transformer';
+import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import { THydratedDocument } from '@/utils/types/filter.types';
 
 @Schema({ timestamps: true })
-export class Translation extends BaseSchema {
+export class TranslationStub extends BaseSchema {
   @Prop({
     type: String,
     required: true,
@@ -26,11 +29,30 @@ export class Translation extends BaseSchema {
     required: true,
   })
   translations: Record<string, string>;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
+}
+
+@Schema({ timestamps: true })
+export class Translation extends TranslationStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+}
+
+@Schema({ timestamps: true })
+export class TranslationFull extends TranslationStub {
+  @Type(() => User)
+  createdBy: User;
 }
 
 export const TranslationModel: ModelDefinition = LifecycleHookManager.attach({
   name: Translation.name,
-  schema: SchemaFactory.createForClass(Translation),
+  schema: SchemaFactory.createForClass(TranslationStub),
 });
 
 export type TranslationDocument = THydratedDocument<Translation>;

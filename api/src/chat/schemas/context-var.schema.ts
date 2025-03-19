@@ -7,13 +7,16 @@
  */
 
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Transform, Type } from 'class-transformer';
+import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import { THydratedDocument } from '@/utils/types/filter.types';
 
 @Schema({ timestamps: true })
-export class ContextVar extends BaseSchema {
+export class ContextVarStub extends BaseSchema {
   @Prop({
     type: String,
     unique: true,
@@ -39,11 +42,30 @@ export class ContextVar extends BaseSchema {
     default: false,
   })
   permanent: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
+}
+
+@Schema({ timestamps: true })
+export class ContextVar extends ContextVarStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+}
+
+@Schema({ timestamps: true })
+export class ContextVarFull extends ContextVarStub {
+  @Type(() => User)
+  createdBy: User;
 }
 
 export const ContextVarModel: ModelDefinition = LifecycleHookManager.attach({
   name: ContextVar.name,
-  schema: SchemaFactory.createForClass(ContextVar),
+  schema: SchemaFactory.createForClass(ContextVarStub),
 });
 
 export type ContextVarDocument = THydratedDocument<ContextVar>;

@@ -10,6 +10,7 @@ import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Transform, Type } from 'class-transformer';
 import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import { TFilterPopulateFields } from '@/utils/types/filter.types';
@@ -70,10 +71,20 @@ export class MessageStub extends BaseSchema {
     default: false,
   })
   handover?: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
 }
 
 @Schema({ timestamps: true })
 export class Message extends MessageStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Transform(({ obj }) => obj.sender?.toString())
   sender?: string;
 
@@ -86,6 +97,9 @@ export class Message extends MessageStub {
 
 @Schema({ timestamps: true })
 export class MessageFull extends MessageStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => Subscriber)
   sender?: Subscriber;
 
@@ -105,4 +119,4 @@ export default MessageModel.schema;
 
 export type MessagePopulate = keyof TFilterPopulateFields<Message, MessageStub>;
 
-export const MESSAGE_POPULATE: MessagePopulate[] = ['sender', 'recipient'];
+export const MESSAGE_POPULATE: MessagePopulate[] = ['sender', 'recipient', 'createdBy'];

@@ -10,6 +10,7 @@ import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Transform, Type } from 'class-transformer';
 import { Schema as MongooseSchema } from 'mongoose';
 
+import { User } from '@/user/schemas/user.schema';
 import { BaseSchema } from '@/utils/generics/base-schema';
 import { LifecycleHookManager } from '@/utils/generics/lifecycle-hook-manager';
 import {
@@ -86,16 +87,29 @@ export class NlpValueStub extends BaseSchema {
       return acc;
     }, {} as NlpValueMap<T>);
   }
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  })
+  createdBy: unknown;
 }
 
 @Schema({ timestamps: true })
 export class NlpValue extends NlpValueStub {
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
   @Transform(({ obj }) => obj.entity.toString())
   entity: string;
 }
 
 @Schema({ timestamps: true })
 export class NlpValueFull extends NlpValueStub {
+  @Type(() => User)
+  createdBy: User;
+
   @Type(() => NlpEntity)
   entity: NlpEntity;
 }
@@ -114,4 +128,4 @@ export type NlpValuePopulate = keyof TFilterPopulateFields<
   NlpValueStub
 >;
 
-export const NLP_VALUE_POPULATE: NlpValuePopulate[] = ['entity'];
+export const NLP_VALUE_POPULATE: NlpValuePopulate[] = ['entity', 'createdBy'];
