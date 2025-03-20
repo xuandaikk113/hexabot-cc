@@ -17,9 +17,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { Attachment } from '@/attachment/schemas/attachment.schema';
 import { AttachmentService } from '@/attachment/services/attachment.service';
 import {
-    AttachmentAccess,
-    AttachmentCreatedByRef,
-    AttachmentResourceRef,
+  AttachmentAccess,
+  AttachmentCreatedByRef,
+  AttachmentResourceRef,
 } from '@/attachment/types';
 import { ChannelService } from '@/channel/channel.service';
 import ChannelHandler from '@/channel/lib/Handler';
@@ -31,20 +31,20 @@ import { Subscriber, SubscriberFull } from '@/chat/schemas/subscriber.schema';
 import { AttachmentRef } from '@/chat/schemas/types/attachment';
 import { Button, ButtonType, PayloadType } from '@/chat/schemas/types/button';
 import {
-    AnyMessage,
-    ContentElement,
-    IncomingMessage,
-    IncomingMessageType,
-    OutgoingMessage,
-    OutgoingMessageFormat,
-    StdEventType,
-    StdOutgoingAttachmentMessage,
-    StdOutgoingButtonsMessage,
-    StdOutgoingEnvelope,
-    StdOutgoingListMessage,
-    StdOutgoingMessage,
-    StdOutgoingQuickRepliesMessage,
-    StdOutgoingTextMessage,
+  AnyMessage,
+  ContentElement,
+  IncomingMessage,
+  IncomingMessageType,
+  OutgoingMessage,
+  OutgoingMessageFormat,
+  StdEventType,
+  StdOutgoingAttachmentMessage,
+  StdOutgoingButtonsMessage,
+  StdOutgoingEnvelope,
+  StdOutgoingListMessage,
+  StdOutgoingMessage,
+  StdOutgoingQuickRepliesMessage,
+  StdOutgoingTextMessage,
 } from '@/chat/schemas/types/message';
 import { BlockOptions } from '@/chat/schemas/types/options';
 import { MessageService } from '@/chat/services/message.service';
@@ -772,6 +772,7 @@ export default abstract class BaseWebChannelHandler<
             recipient: profile.id,
             read: true,
             delivery: true,
+            createdBy: profile.id,
           };
           this.eventEmitter.emit('hook:chatbot:sent', sentMessage, event);
           return res.status(200).json(event._adapter.raw);

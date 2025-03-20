@@ -10,7 +10,6 @@
   "author": "Hexastack",
   "license": "AGPL-3.0-only",
   "scripts": {
-    "prepare": "husky install",
     "dev:frontend": "npm run dev --workspace=frontend",
     "dev:widget": "npm run dev --workspace=widget",
     "release:api:patch": "cd api/ && npm version --git-tag-version false --commit-hooks false patch",
@@ -20,7 +19,6 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
-    "husky": "^9.0.11"
+    "@commitlint/config-conventional": "^19.2.2"
   }
 }

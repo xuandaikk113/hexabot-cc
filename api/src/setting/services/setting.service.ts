@@ -15,8 +15,8 @@ import { config } from '@/config';
 import { Config } from '@/config/types';
 import { LoggerService } from '@/logger/logger.service';
 import {
-    ALLOWED_ORIGINS_CACHE_KEY,
-    SETTING_CACHE_KEY,
+  ALLOWED_ORIGINS_CACHE_KEY,
+  SETTING_CACHE_KEY,
 } from '@/utils/constants/cache';
 import { Cacheable } from '@/utils/decorators/cacheable.decorator';
 import { BaseService } from '@/utils/generics/base-service';
@@ -44,10 +44,14 @@ export class SettingService extends BaseService<Setting> {
    * @param group - The group of settings to check.
    * @param data - The array of settings to seed if none exist.
    */
-  async seedIfNotExist(group: string, data: SettingCreateDto[]) {
+  async seedIfNotExist(group: string, data: SettingCreateDto[], userId?: string) {
     const count = await this.count({ group });
     if (count === 0) {
-      await this.seeder.seed(data);
+      const settingsWithCreator = data.map(setting => ({
+        ...setting,
+        createdBy: userId || 'system'
+      }));
+      await this.seeder.seed(settingsWithCreator);
     }
   }
 

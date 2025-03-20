@@ -113,7 +113,8 @@ async function bootstrap() {
     swagger(app);
   }
 
-  await app.listen(3000);
+  const port = process.env.API_PORT ? parseInt(process.env.API_PORT) : 3000;
+  await app.listen(port, '0.0.0.0');
 }
 
 bootstrap();

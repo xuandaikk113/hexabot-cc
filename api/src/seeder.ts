@@ -111,9 +111,20 @@ export async function seedDatabase(app: INestApplicationContext) {
     }
   }
 
+  // Get admin user for settings creation
+  const users = await userSeeder.findAll();
+  const adminUser = users.find(user => user.roles.includes(adminRole.id));
+  if (!adminUser) {
+    throw new Error('Admin user not found for settings creation');
+  }
+
   // Seed settings and metadata
   try {
-    await settingSeeder.seed(DEFAULT_SETTINGS);
+    const settingsWithCreator = DEFAULT_SETTINGS.map(setting => ({
+      ...setting,
+      createdBy: adminUser.id
+    }));
+    await settingSeeder.seed(settingsWithCreator);
     await metadataSeeder.seed(DEFAULT_METADATA);
   } catch (e) {
     logger.error('Unable to seed the database with settings and metadata!');
