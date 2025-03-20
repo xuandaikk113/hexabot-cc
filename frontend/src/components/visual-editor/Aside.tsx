@@ -1,9 +1,9 @@
 /*
  * Copyright © 2024 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { Grid, IconButton, Paper, Typography, styled } from "@mui/material";
@@ -19,11 +19,11 @@ import { IBlockAttributes } from "@/types/block.types";
 import { SXStyleOptions } from "@/utils/SXStyleOptions";
 
 import {
-  ATTACHMENT_BLOCK_TEMPLATE,
-  BUTTONS_BLOCK_TEMPLATE,
-  LIST_BLOCK_TEMPLATE,
-  QUICK_REPLIES_BLOCK_TEMPLATE,
-  SIMPLE_TEXT_BLOCK_TEMPLATE,
+    ATTACHMENT_BLOCK_TEMPLATE,
+    BUTTONS_BLOCK_TEMPLATE,
+    LIST_BLOCK_TEMPLATE,
+    QUICK_REPLIES_BLOCK_TEMPLATE,
+    SIMPLE_TEXT_BLOCK_TEMPLATE,
 } from "./constants";
 import { CustomBlocks } from "./CustomBlocks";
 import { useVisualEditor } from "./hooks/useVisualEditor";

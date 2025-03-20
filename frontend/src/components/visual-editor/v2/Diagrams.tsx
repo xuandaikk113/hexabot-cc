@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { Add, ContentCopyRounded, MoveUp } from "@mui/icons-material";
@@ -14,20 +14,20 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import {
-  Box,
-  Button,
-  ButtonGroup,
-  Grid,
-  Tab,
-  Tabs,
-  Tooltip,
-  tabsClasses,
+    Box,
+    Button,
+    ButtonGroup,
+    Grid,
+    Tab,
+    Tabs,
+    Tooltip,
+    tabsClasses,
 } from "@mui/material";
 import {
-  DefaultPortModel,
-  DiagramEngine,
-  DiagramModel,
-  DiagramModelGenerics,
+    DefaultPortModel,
+    DiagramEngine,
+    DiagramModel,
+    DiagramModelGenerics,
 } from "@projectstorm/react-diagrams";
 import { useRouter } from "next/router";
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";

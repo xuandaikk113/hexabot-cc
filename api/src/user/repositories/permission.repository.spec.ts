@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { EventEmitter2 } from '@nestjs/event-emitter';
@@ -12,12 +12,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Model } from 'mongoose';
 
 import {
-  installPermissionFixtures,
-  permissionFixtures,
+    installPermissionFixtures,
+    permissionFixtures,
 } from '@/utils/test/fixtures/permission';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import { ModelRepository } from '../repositories/model.repository';
@@ -26,9 +26,9 @@ import { RoleRepository } from '../repositories/role.repository';
 import { InvitationModel } from '../schemas/invitation.schema';
 import { ModelModel, Model as ModelSchema } from '../schemas/model.schema';
 import {
-  Permission,
-  PermissionFull,
-  PermissionModel,
+    Permission,
+    PermissionFull,
+    PermissionModel,
 } from '../schemas/permission.schema';
 import { Role, RoleModel } from '../schemas/role.schema';
 import { Action } from '../types/action.type';

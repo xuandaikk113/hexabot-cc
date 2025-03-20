@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
@@ -39,12 +39,12 @@ import { UserService } from '@/user/services/user.service';
 import { IGNORED_TEST_FIELDS } from '@/utils/test/constants';
 import { getUpdateOneError } from '@/utils/test/errors/messages';
 import {
-  blockFixtures,
-  installBlockFixtures,
+    blockFixtures,
+    installBlockFixtures,
 } from '@/utils/test/fixtures/block';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import { BlockCreateDto, BlockUpdateDto } from '../dto/block.dto';

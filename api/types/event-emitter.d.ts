@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { type Session as ExpressSession } from 'express-session';
@@ -27,14 +27,14 @@ import { type Menu } from '@/cms/schemas/menu.schema';
 import { type Language } from '@/i18n/schemas/language.schema';
 import { type Translation } from '@/i18n/schemas/translation.schema';
 import type {
-  NlpEntity,
-  NlpEntityDocument,
+    NlpEntity,
+    NlpEntityDocument,
 } from '@/nlp/schemas/nlp-entity.schema';
 import { type NlpSampleEntity } from '@/nlp/schemas/nlp-sample-entity.schema';
 import { type NlpSample } from '@/nlp/schemas/nlp-sample.schema';
 import type {
-  NlpValue,
-  NlpValueDocument,
+    NlpValue,
+    NlpValueDocument,
 } from '@/nlp/schemas/nlp-value.schema';
 import { type Setting } from '@/setting/schemas/setting.schema';
 import { type Invitation } from '@/user/schemas/invitation.schema';
@@ -44,8 +44,8 @@ import { type Role } from '@/user/schemas/role.schema';
 import { type User } from '@/user/schemas/user.schema';
 import { EHook, type DeleteResult } from '@/utils/generics/base-repository';
 import type {
-  TFilterQuery,
-  THydratedDocument,
+    TFilterQuery,
+    THydratedDocument,
 } from '@/utils/types/filter.types';
 
 import '@nestjs/event-emitter';

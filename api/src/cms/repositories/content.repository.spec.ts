@@ -1,9 +1,9 @@
 /*
  * Copyright © 2024 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { EventEmitter2 } from '@nestjs/event-emitter';
@@ -12,22 +12,22 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Model } from 'mongoose';
 
 import {
-  ContentType,
-  ContentTypeModel,
+    ContentType,
+    ContentTypeModel,
 } from '@/cms/schemas/content-type.schema';
 import { LoggerService } from '@/logger/logger.service';
 import { contentTypeFixtures } from '@/utils/test/fixtures/contenttype';
 import { getPageQuery } from '@/utils/test/pagination';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import { Content, ContentModel } from '../schemas/content.schema';
 
 import {
-  contentFixtures,
-  installContentFixtures,
+    contentFixtures,
+    installContentFixtures,
 } from './../../utils/test/fixtures/content';
 import { ContentRepository } from './content.repository';
 

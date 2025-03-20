@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { GridPaginationModel, GridSortModel } from "@mui/x-data-grid";
@@ -12,10 +12,10 @@ import { EntityType, Format } from "@/services/types";
 
 import { IAttachment, IAttachmentAttributes } from "./attachment.types";
 import {
-  IBlock,
-  IBlockAttributes,
-  IBlockFull,
-  ICustomBlockTemplate,
+    IBlock,
+    IBlockAttributes,
+    IBlockFull,
+    ICustomBlockTemplate,
 } from "./block.types";
 import { ICategory, ICategoryAttributes } from "./category.types";
 import { IChannel, IChannelAttributes } from "./channel.types";
@@ -26,44 +26,44 @@ import { IHelper, IHelperAttributes } from "./helper.types";
 import { ILabel, ILabelAttributes, ILabelFull } from "./label.types";
 import { ILanguage, ILanguageAttributes } from "./language.types";
 import {
-  IMenuNode,
-  IMenuNodeAttributes,
-  IMenuNodeFull,
+    IMenuNode,
+    IMenuNodeAttributes,
+    IMenuNodeFull,
 } from "./menu-tree.types";
 import { IMenuItem, IMenuItemAttributes, IMenuItemFull } from "./menu.types";
 import { IMessage, IMessageAttributes, IMessageFull } from "./message.types";
 import { IModel, IModelAttributes, IModelFull } from "./model.types";
 import {
-  INlpEntity,
-  INlpEntityAttributes,
-  INlpEntityFull,
+    INlpEntity,
+    INlpEntityAttributes,
+    INlpEntityFull,
 } from "./nlp-entity.types";
 import {
-  INlpSample,
-  INlpSampleAttributes,
-  INlpSampleFull,
+    INlpSample,
+    INlpSampleAttributes,
+    INlpSampleFull,
 } from "./nlp-sample.types";
 import {
-  INlpSampleEntity,
-  INlpSampleEntityAttributes,
-  INlpSampleEntityFull,
+    INlpSampleEntity,
+    INlpSampleEntityAttributes,
+    INlpSampleEntityFull,
 } from "./nlp-sample_entity.types";
 import {
-  INlpValue,
-  INlpValueAttributes,
-  INlpValueFull,
+    INlpValue,
+    INlpValueAttributes,
+    INlpValueFull,
 } from "./nlp-value.types";
 import {
-  IPermission,
-  IPermissionAttributes,
-  IPermissionFull,
+    IPermission,
+    IPermissionAttributes,
+    IPermissionFull,
 } from "./permission.types";
 import { IRole, IRoleAttributes, IRoleFull } from "./role.types";
 import { ISetting, ISettingAttributes } from "./setting.types";
 import {
-  ISubscriber,
-  ISubscriberAttributes,
-  ISubscriberFull,
+    ISubscriber,
+    ISubscriberAttributes,
+    ISubscriberFull,
 } from "./subscriber.types";
 import { ITranslation, ITranslationAttributes } from "./translation.types";
 import { IUser, IUserAttributes, IUserFull } from "./user.types";

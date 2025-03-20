@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import fs from 'fs';
@@ -32,13 +32,13 @@ import { PermissionService } from '@/user/services/permission.service';
 import { NOT_FOUND_ID } from '@/utils/constants/mock';
 import { IGNORED_TEST_FIELDS } from '@/utils/test/constants';
 import {
-  attachmentFixtures,
-  installAttachmentFixtures,
+    attachmentFixtures,
+    installAttachmentFixtures,
 } from '@/utils/test/fixtures/attachment';
 import { installSettingFixtures } from '@/utils/test/fixtures/setting';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import { attachment, attachmentFile } from '../mocks/attachment.mock';
@@ -46,9 +46,9 @@ import { AttachmentRepository } from '../repositories/attachment.repository';
 import { Attachment, AttachmentModel } from '../schemas/attachment.schema';
 import { AttachmentService } from '../services/attachment.service';
 import {
-  AttachmentAccess,
-  AttachmentCreatedByRef,
-  AttachmentResourceRef,
+    AttachmentAccess,
+    AttachmentCreatedByRef,
+    AttachmentResourceRef,
 } from '../types';
 
 import { AttachmentController } from './attachment.controller';

@@ -1,19 +1,19 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import LinkIcon from "@mui/icons-material/Link";
 import { FormControl, FormControlLabel, Switch } from "@mui/material";
 import { FC, Fragment, useEffect } from "react";
 import {
-  Controller,
-  ControllerRenderProps,
-  FieldErrors,
-  useForm,
+    Controller,
+    ControllerRenderProps,
+    FieldErrors,
+    useForm,
 } from "react-hook-form";
 
 import AttachmentInput from "@/app-components/attachment/AttachmentInput";
@@ -28,9 +28,9 @@ import { EntityType } from "@/services/types";
 import { AttachmentResourceRef } from "@/types/attachment.types";
 import { ComponentFormProps } from "@/types/common/dialogs.types";
 import {
-  ContentField,
-  ContentFieldType,
-  IContentType,
+    ContentField,
+    ContentFieldType,
+    IContentType,
 } from "@/types/content-type.types";
 import { IContent, IContentAttributes } from "@/types/content.types";
 import { MIME_TYPES } from "@/utils/attachment";

@@ -1,9 +1,9 @@
 /*
  * Copyright © 2024 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { BadRequestException, NotFoundException } from '@nestjs/common';
@@ -14,19 +14,19 @@ import { Test } from '@nestjs/testing';
 import { LoggerService } from '@/logger/logger.service';
 import { getUpdateOneError } from '@/utils/test/errors/messages';
 import {
-  contextVarFixtures,
-  installContextVarFixtures,
+    contextVarFixtures,
+    installContextVarFixtures,
 } from '@/utils/test/fixtures/contextvar';
 import { getPageQuery } from '@/utils/test/pagination';
 import { sortRowsBy } from '@/utils/test/sort';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import {
-  ContextVarCreateDto,
-  ContextVarUpdateDto,
+    ContextVarCreateDto,
+    ContextVarUpdateDto,
 } from '../dto/context-var.dto';
 import { ContextVarRepository } from '../repositories/context-var.repository';
 import { ContextVar, ContextVarModel } from '../schemas/context-var.schema';

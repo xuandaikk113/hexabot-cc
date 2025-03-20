@@ -1,28 +1,28 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import {
-  Body,
-  Controller,
-  Delete,
-  ForbiddenException,
-  Get,
-  HttpCode,
-  NotFoundException,
-  Param,
-  Patch,
-  Post,
-  Query,
-  Req,
-  Session,
-  UnauthorizedException,
-  UploadedFile,
-  UseInterceptors,
+    Body,
+    Controller,
+    Delete,
+    ForbiddenException,
+    Get,
+    HttpCode,
+    NotFoundException,
+    Param,
+    Patch,
+    Post,
+    Query,
+    Req,
+    Session,
+    UnauthorizedException,
+    UploadedFile,
+    UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CsrfCheck } from '@tekuconcept/nestjs-csrf';
@@ -32,9 +32,9 @@ import { diskStorage, memoryStorage } from 'multer';
 
 import { AttachmentService } from '@/attachment/services/attachment.service';
 import {
-  AttachmentAccess,
-  AttachmentCreatedByRef,
-  AttachmentResourceRef,
+    AttachmentAccess,
+    AttachmentCreatedByRef,
+    AttachmentResourceRef,
 } from '@/attachment/types';
 import { config } from '@/config';
 import { CsrfInterceptor } from '@/interceptors/csrf.interceptor';
@@ -50,11 +50,11 @@ import { TFilterQuery } from '@/utils/types/filter.types';
 
 import { InvitationCreateDto } from '../dto/invitation.dto';
 import {
-  UserCreateDto,
-  UserEditProfileDto,
-  UserRequestResetDto,
-  UserResetPasswordDto,
-  UserUpdateStateAndRolesDto,
+    UserCreateDto,
+    UserEditProfileDto,
+    UserRequestResetDto,
+    UserResetPasswordDto,
+    UserUpdateStateAndRolesDto,
 } from '../dto/user.dto';
 import { User, UserFull, UserPopulate, UserStub } from '../schemas/user.schema';
 import { InvitationService } from '../services/invitation.service';

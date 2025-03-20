@@ -1,22 +1,22 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
-  IsIn,
-  IsMimeType,
-  IsNotEmpty,
-  IsNumber,
-  IsObject,
-  IsOptional,
-  IsString,
-  MaxLength,
+    IsIn,
+    IsMimeType,
+    IsNotEmpty,
+    IsNumber,
+    IsObject,
+    IsOptional,
+    IsString,
+    MaxLength,
 } from 'class-validator';
 
 import { ChannelName } from '@/channel/types';
@@ -24,9 +24,9 @@ import { ObjectIdDto } from '@/utils/dto/object-id.dto';
 import { IsObjectId } from '@/utils/validation-rules/is-object-id';
 
 import {
-  AttachmentAccess,
-  AttachmentCreatedByRef,
-  AttachmentResourceRef,
+    AttachmentAccess,
+    AttachmentCreatedByRef,
+    AttachmentResourceRef,
 } from '../types';
 
 export class AttachmentMetadataDto {

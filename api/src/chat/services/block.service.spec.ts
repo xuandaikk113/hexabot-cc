@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
@@ -15,8 +15,8 @@ import { AttachmentRepository } from '@/attachment/repositories/attachment.repos
 import { AttachmentModel } from '@/attachment/schemas/attachment.schema';
 import { AttachmentService } from '@/attachment/services/attachment.service';
 import {
-  subscriberWithLabels,
-  subscriberWithoutLabels,
+    subscriberWithLabels,
+    subscriberWithoutLabels,
 } from '@/channel/lib/__test__/subscriber.mock';
 import { PayloadType } from '@/chat/schemas/types/button';
 import { ContentTypeRepository } from '@/cms/repositories/content-type.repository';
@@ -37,26 +37,26 @@ import { LoggerService } from '@/logger/logger.service';
 import { PluginService } from '@/plugins/plugins.service';
 import { SettingService } from '@/setting/services/setting.service';
 import {
-  blockFixtures,
-  installBlockFixtures,
+    blockFixtures,
+    installBlockFixtures,
 } from '@/utils/test/fixtures/block';
 import { installContentFixtures } from '@/utils/test/fixtures/content';
 import {
-  blockEmpty,
-  blockGetStarted,
-  blockProductListMock,
-  blocks,
+    blockEmpty,
+    blockGetStarted,
+    blockProductListMock,
+    blocks,
 } from '@/utils/test/mocks/block';
 import {
-  contextBlankInstance,
-  contextEmailVarInstance,
-  contextGetStartedInstance,
-  subscriberContextBlankInstance,
+    contextBlankInstance,
+    contextEmailVarInstance,
+    contextGetStartedInstance,
+    subscriberContextBlankInstance,
 } from '@/utils/test/mocks/conversation';
 import { nlpEntitiesGreeting } from '@/utils/test/mocks/nlp';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 
 import { BlockRepository } from '../repositories/block.repository';

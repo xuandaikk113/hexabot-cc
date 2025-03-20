@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { BadRequestException, Injectable } from '@nestjs/common';
@@ -17,9 +17,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { Attachment } from '@/attachment/schemas/attachment.schema';
 import { AttachmentService } from '@/attachment/services/attachment.service';
 import {
-  AttachmentAccess,
-  AttachmentCreatedByRef,
-  AttachmentResourceRef,
+    AttachmentAccess,
+    AttachmentCreatedByRef,
+    AttachmentResourceRef,
 } from '@/attachment/types';
 import { ChannelService } from '@/channel/channel.service';
 import ChannelHandler from '@/channel/lib/Handler';
@@ -31,20 +31,20 @@ import { Subscriber, SubscriberFull } from '@/chat/schemas/subscriber.schema';
 import { AttachmentRef } from '@/chat/schemas/types/attachment';
 import { Button, ButtonType, PayloadType } from '@/chat/schemas/types/button';
 import {
-  AnyMessage,
-  ContentElement,
-  IncomingMessage,
-  IncomingMessageType,
-  OutgoingMessage,
-  OutgoingMessageFormat,
-  StdEventType,
-  StdOutgoingAttachmentMessage,
-  StdOutgoingButtonsMessage,
-  StdOutgoingEnvelope,
-  StdOutgoingListMessage,
-  StdOutgoingMessage,
-  StdOutgoingQuickRepliesMessage,
-  StdOutgoingTextMessage,
+    AnyMessage,
+    ContentElement,
+    IncomingMessage,
+    IncomingMessageType,
+    OutgoingMessage,
+    OutgoingMessageFormat,
+    StdEventType,
+    StdOutgoingAttachmentMessage,
+    StdOutgoingButtonsMessage,
+    StdOutgoingEnvelope,
+    StdOutgoingListMessage,
+    StdOutgoingMessage,
+    StdOutgoingQuickRepliesMessage,
+    StdOutgoingTextMessage,
 } from '@/chat/schemas/types/message';
 import { BlockOptions } from '@/chat/schemas/types/options';
 import { MessageService } from '@/chat/services/message.service';

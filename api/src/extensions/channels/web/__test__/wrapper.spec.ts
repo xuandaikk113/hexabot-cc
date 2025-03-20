@@ -1,9 +1,9 @@
 /*
  * Copyright © 2025 Hexastack. All rights reserved.
  *
- * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) with the following additional terms:
- * 1. The name "Hexabot" is a trademark of Hexastack. You may not use this name in derivative works without express written permission.
- * 2. All derivative works must include clear attribution to the original creator and software, Hexastack and Hexabot, in a prominent location (e.g., in the software's "About" section, documentation, and README file).
+ * Licensed under the GNU Affero General Public License v3.0 (AGPLv3) :
+ * 1. .
+ * 2. .
  */
 
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
@@ -14,8 +14,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { AttachmentRepository } from '@/attachment/repositories/attachment.repository';
 import {
-  Attachment,
-  AttachmentModel,
+    Attachment,
+    AttachmentModel,
 } from '@/attachment/schemas/attachment.schema';
 import { AttachmentService } from '@/attachment/services/attachment.service';
 import { ChannelService } from '@/channel/channel.service';
@@ -24,8 +24,8 @@ import { SubscriberRepository } from '@/chat/repositories/subscriber.repository'
 import { MessageModel } from '@/chat/schemas/message.schema';
 import { SubscriberModel } from '@/chat/schemas/subscriber.schema';
 import {
-  IncomingMessageType,
-  StdEventType,
+    IncomingMessageType,
+    StdEventType,
 } from '@/chat/schemas/types/message';
 import { MessageService } from '@/chat/services/message.service';
 import { SubscriberService } from '@/chat/services/subscriber.service';
@@ -38,8 +38,8 @@ import { NlpService } from '@/nlp/services/nlp.service';
 import { SettingService } from '@/setting/services/setting.service';
 import { installSubscriberFixtures } from '@/utils/test/fixtures/subscriber';
 import {
-  closeInMongodConnection,
-  rootMongooseTestModule,
+    closeInMongodConnection,
+    rootMongooseTestModule,
 } from '@/utils/test/test';
 import { SocketEventDispatcherService } from '@/websocket/services/socket-event-dispatcher.service';
 import { WebsocketGateway } from '@/websocket/websocket.gateway';
