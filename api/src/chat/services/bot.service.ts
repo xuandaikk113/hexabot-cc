@@ -76,6 +76,7 @@ export class BotService {
       handover: !!(options && options.assignTo),
       read: false,
       delivery: false,
+      createdBy: 'system',
     };
     this.eventEmitter.emit('hook:chatbot:sent', sentMessage, event);
 
@@ -278,6 +279,7 @@ export class BotService {
           attachedBlock: null,
           category: null,
           previousBlocks: [],
+          createdBy: currentBlock.createdBy || ({ id: 'system' } as any),
         };
         convo.context.attempt++;
         fallback = true;
@@ -479,13 +481,17 @@ export class BotService {
                 'No global fallback block defined, sending a message ...',
                 err,
               );
-              const globalFallbackBlock = {
+              const globalFallbackBlock: BlockFull = {
                 id: 'global-fallback',
                 name: 'Global Fallback',
                 message: settings.chatbot_settings.fallback_message,
                 options: {},
                 patterns: [],
                 assign_labels: [],
+                trigger_labels: [],
+                nextBlocks: [],
+                outcomes: [],
+                trigger_channels: [],
                 starts_conversation: false,
                 position: { x: 0, y: 0 },
                 capture_vars: [],
@@ -493,7 +499,9 @@ export class BotService {
                 createdAt: new Date(),
                 updatedAt: new Date(),
                 attachedBlock: null,
-              } as any as BlockFull;
+                category: null,
+                createdBy: { id: 'system' } as any,
+              };
 
               const envelope = await this.blockService.processMessage(
                 globalFallbackBlock,

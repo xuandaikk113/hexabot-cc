@@ -246,6 +246,7 @@ export class BlockController extends BaseController<
             },
           })
         ).map(({ id }) => id),
+        createdBy: 'system',
       },
     });
     // TODO: the validate function doesn't support nested objects, we need to refactor it to support nested objects

@@ -97,6 +97,7 @@ export class MenuController extends BaseController<
         parent: body?.parent
           ? (await this.menuService.findOne(body.parent))?.id
           : undefined,
+        createdBy: 'system',
       },
     });
     return await this.menuService.create(body);

@@ -47,11 +47,6 @@ export class ChatService {
     private readonly attachmentService: AttachmentService,
   ) {}
 
-  /**
-   * Ends a given conversation (sets active to false)
-   *
-   * @param convo - The conversation to end
-   */
   @OnEvent('hook:conversation:end')
   async handleEndConversation(convo: Conversation) {
     try {
@@ -62,11 +57,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Ends a given conversation (sets active to false)
-   *
-   * @param convoId - The conversation ID
-   */
   @OnEvent('hook:conversation:close')
   async handleCloseConversation(convoId: string) {
     try {
@@ -77,11 +67,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Finds or creates a message and broadcast it to the websocket "Message" room
-   *
-   * @param sentMessage - The message that has been sent
-   */
   @OnEvent('hook:chatbot:sent')
   async handleSentMessage(sentMessage: MessageCreateDto) {
     if (sentMessage.mid) {
@@ -100,11 +85,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Creates the received message and broadcast it to the websocket "Message" room
-   *
-   * @param event - The received event
-   */
   @OnEvent('hook:chatbot:received')
   async handleReceivedMessage(event: EventWrapper<any, any>) {
     let messageId = '';
@@ -121,6 +101,7 @@ export class ChatService {
       message: event.getMessage(),
       delivery: true,
       read: true,
+      createdBy: 'system',
     };
     this.logger.debug('Logging message', received);
     try {
@@ -144,11 +125,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Marks messages as delivered and broadcast it to the websocket "Message" room
-   *
-   * @param event - The received event
-   */
   @OnEvent('hook:chatbot:delivery')
   async handleMessageDelivery(event: EventWrapper<any, any>) {
     if (config.chatbot.messages.track_delivery) {
@@ -169,11 +145,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Mark messages as read and broadcast to websocket "Message" room
-   *
-   * @param event - The received event
-   */
   @OnEvent('hook:chatbot:read')
   async handleMessageRead(event: EventWrapper<any, any>) {
     if (config.chatbot.messages.track_read) {
@@ -203,11 +174,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Handle echoing messages
-   *
-   * @param event - The received event
-   */
   @OnEvent('hook:chatbot:echo')
   async handleEchoMessage(event: EventWrapper<any, any>) {
     this.logger.verbose('Message echo received', event._adapter._raw);
@@ -229,6 +195,7 @@ export class ChatService {
           message: event.getMessage(),
           delivery: true,
           read: false,
+          createdBy: 'system',
         };
 
         this.eventEmitter.emit('hook:chatbot:sent', sentMessage);
@@ -239,11 +206,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Handle new incoming messages
-   *
-   * @param event - The received event
-   */
   @OnEvent('hook:chatbot:message')
   async handleNewMessage(event: EventWrapper<any, any>) {
     this.logger.debug('New message received', event._adapter.raw);
@@ -265,14 +227,11 @@ export class ChatService {
           throw new Error('Unable to create a new subscriber');
         }
       } else {
-        // Already existing user profile
-        // Exec lastvisit hook
         this.eventEmitter.emit('hook:user:lastvisit', subscriber);
       }
 
       this.websocketGateway.broadcastSubscriberUpdate(subscriber);
 
-      // Retrieve and store the subscriber avatar
       if (handler.getSubscriberAvatar) {
         try {
           const metadata = await handler.getSubscriberAvatar(event);
@@ -311,15 +270,12 @@ export class ChatService {
         }
       }
 
-      // Set the subscriber object
       event.setSender(subscriber!);
 
-      // Preprocess the event (persist attachments, ...)
       if (event.preprocess) {
         await event.preprocess();
       }
 
-      // Trigger message received event
       this.eventEmitter.emit('hook:chatbot:received', event);
 
       if (subscriber?.assignedTo) {
@@ -343,11 +299,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Handle new subscriber and send notification the websocket
-   *
-   * @param subscriber - The end user (subscriber)
-   */
   @OnEvent('hook:subscriber:postCreate')
   async onSubscriberCreate({ _id }: SubscriberDocument) {
     const subscriber = await this.subscriberService.findOne(_id);
@@ -356,11 +307,6 @@ export class ChatService {
     }
   }
 
-  /**
-   * Handle updated subscriber and send notification the websocket
-   *
-   * @param subscriber - The end user (subscriber)
-   */
   @OnEvent('hook:subscriber:postUpdate')
   async onSubscriberUpdate({ _id }: SubscriberDocument) {
     const subscriber = await this.subscriberService.findOne(_id);

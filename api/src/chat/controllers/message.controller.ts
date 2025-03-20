@@ -167,6 +167,7 @@ export class MessageController extends BaseController<
         sentBy: req.session?.passport?.user.id,
         read: false,
         delivery: false,
+        createdBy: req.session?.passport?.user.id || 'system',
       };
       this.eventEmitter.emit('hook:chatbot:sent', sentMessage);
       return {

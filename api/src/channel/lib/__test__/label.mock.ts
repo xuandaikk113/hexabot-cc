@@ -22,6 +22,7 @@ const baseLabel: Label = {
   },
   description: '',
   builtin: false,
+  createdBy: 'system',
 };
 
 export const labelMock: Label = {

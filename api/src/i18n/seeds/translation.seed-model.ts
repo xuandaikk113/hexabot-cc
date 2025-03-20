@@ -16,5 +16,6 @@ export const translationModels: TranslationCreateDto[] = [
       fr: 'Bienvenue',
     },
     translated: 100,
+    createdBy: 'system',
   },
 ];

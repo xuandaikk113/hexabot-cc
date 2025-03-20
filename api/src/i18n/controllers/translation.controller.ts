@@ -124,7 +124,7 @@ export class TranslationController extends BaseController<Translation> {
     const queue = strings.map((str) =>
       this.translationService.findOneOrCreate(
         { str },
-        { str, translations: defaultTrans },
+        { str, translations: defaultTrans, createdBy: 'system' },
       ),
     );
     await Promise.all(queue);

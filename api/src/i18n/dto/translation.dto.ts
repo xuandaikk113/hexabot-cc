@@ -9,10 +9,10 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsNotEmpty,
-  IsObject,
-  IsString,
-  IsOptional,
   IsNumber,
+  IsObject,
+  IsOptional,
+  IsString,
 } from 'class-validator';
 
 export class TranslationCreateDto {
@@ -30,6 +30,11 @@ export class TranslationCreateDto {
   @IsNotEmpty()
   @IsNumber()
   translated: number;
+
+  @ApiProperty({ description: 'Created by user', type: String })
+  @IsString()
+  @IsNotEmpty()
+  createdBy: string;
 }
 
 export class TranslationUpdateDto {

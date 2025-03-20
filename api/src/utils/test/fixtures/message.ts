@@ -9,7 +9,7 @@
 import mongoose from 'mongoose';
 
 import { MessageCreateDto } from '@/chat/dto/message.dto';
-import { MessageModel, Message } from '@/chat/schemas/message.schema';
+import { Message, MessageModel } from '@/chat/schemas/message.schema';
 
 import { getFixturesWithDefaultValues } from '../defaultValues';
 import { TFixturesDefaultValues } from '../types';
@@ -25,6 +25,7 @@ const messages: MessageCreateDto[] = [
     message: { text: 'Hello from the past' },
     read: true,
     delivery: true,
+    createdBy: '0',
   },
   {
     mid: 'mid-2',
@@ -33,6 +34,7 @@ const messages: MessageCreateDto[] = [
     sentBy: '0',
     message: { text: 'Hello' },
     delivery: true,
+    createdBy: '0',
   },
   {
     mid: 'mid-3',
@@ -40,6 +42,7 @@ const messages: MessageCreateDto[] = [
     recipient: '1',
     sentBy: '0',
     message: { text: 'Hello back' },
+    createdBy: '0',
   },
 ];
 
@@ -65,6 +68,7 @@ export const installMessageFixtures = async () => {
         sender: m.sender ? subscribers[parseInt(m.sender)].id : null,
         recipient: m.recipient ? subscribers[parseInt(m.recipient)].id : null,
         sentBy: m.sentBy ? users[parseInt(m.sentBy)].id : null,
+        createdBy: m.createdBy ? users[parseInt(m.createdBy)].id : 'system',
       };
     }),
   );

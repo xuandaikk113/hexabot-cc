@@ -11,8 +11,8 @@ import {
   IsBoolean,
   IsNotEmpty,
   IsObject,
-  IsString,
   IsOptional,
+  IsString,
 } from 'class-validator';
 
 import { IsObjectId } from '@/utils/validation-rules/is-object-id';
@@ -74,6 +74,12 @@ export class MessageCreateDto {
   @IsBoolean()
   @IsOptional()
   handover?: boolean;
+
+  @ApiProperty({ description: 'Created by user', type: String })
+  @IsString()
+  @IsNotEmpty()
+  @IsObjectId({ message: 'CreatedBy must be a valid ObjectId' })
+  createdBy: string;
 }
 
 export class MessageUpdateDto extends PartialType(MessageCreateDto) {}

@@ -78,6 +78,7 @@ export class ContentController extends BaseController<
       dto: contentDto,
       allowedIds: {
         entity: contentType?.id,
+        createdBy: 'system',
       },
     });
     return await this.contentService.create(contentDto);

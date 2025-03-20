@@ -78,6 +78,7 @@ export class NlpValueController extends BaseController<
         entity: createNlpValueDto.entity
           ? (await this.nlpEntityService.findOne(createNlpValueDto.entity))?.id
           : null,
+        createdBy: 'system',
       },
     });
     return await this.nlpValueService.create(createNlpValueDto);
